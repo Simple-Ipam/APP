@@ -1,0 +1,12 @@
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\SimpleIPAM.exe.config
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\SimpleIPAM.exe
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\SimpleIPAM.pdb
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\fr-BE\SimpleIPAM.resources.dll
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.csprojAssemblyReference.cache
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.LoginSIPAM.resources
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.Properties.Resources.resources
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.LoginSIPAM.fr-BE.resources
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.csproj.GenerateResource.cache
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\fr-BE\SimpleIPAM.resources.dll
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.exe
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\SimpleIPAM.pdb
