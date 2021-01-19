@@ -1,0 +1,11 @@
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.exe
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.deps.json
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.runtimeconfig.json
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.runtimeconfig.dev.json
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.dll
+C:\Users\user\Desktop\appNet\SimpleIPAM\bin\Debug\netcoreapp3.0\SimpleIPAM.pdb
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\netcoreapp3.0\SimpleIPAM.csprojAssemblyReference.cache
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\netcoreapp3.0\SimpleIPAM.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\netcoreapp3.0\SimpleIPAM.AssemblyInfo.cs
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\netcoreapp3.0\SimpleIPAM.dll
+C:\Users\user\Desktop\appNet\SimpleIPAM\obj\Debug\netcoreapp3.0\SimpleIPAM.pdb
