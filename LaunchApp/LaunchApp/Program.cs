@@ -19,7 +19,6 @@ namespace LaunchApp
             //Definir les requis pour l'app.
             var scn = new loadingScr();
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(scn);
             
             //Verifier si la connection est existante.

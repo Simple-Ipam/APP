@@ -2,3 +2,13 @@ C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csprojAssem
 C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.loadingScr.resources
 C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.Properties.Resources.resources
 C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csproj.GenerateResource.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.exe.config
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.exe
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.pdb
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csprojAssemblyReference.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.loadingScr.resources
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.Properties.Resources.resources
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csproj.GenerateResource.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csproj.CoreCompileInputs.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.exe
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.pdb
