@@ -1,0 +1,4 @@
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csprojAssemblyReference.cache
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.loadingScr.resources
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.Properties.Resources.resources
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csproj.GenerateResource.cache
