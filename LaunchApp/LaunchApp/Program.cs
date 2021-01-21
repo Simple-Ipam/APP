@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,13 @@ namespace LaunchApp
             if (CheckForInternetConnection())
             {
                 //Recuper la version mis en ligne (version serveur)
-                var versionServeur = new WebClient().DownloadString("");
+                var versionServeur = new WebClient().DownloadString("https://google.com");
                 var versionMachine = "";
                 // Verifier si le fichier existe pas.
                 if (!File.Exists(Application.UserAppDataPath+VERSION))
                 {
                     //Installer NetApp + creer le fichier version.
+                    InstallPackage(versionMachine);
                 }
 
                 //Recuperer la version machine de AppNet.
@@ -46,7 +48,8 @@ namespace LaunchApp
                 //Verifier si la version machine est != de celle du serveur.
                 if(versionMachine != versionServeur)
                 {
-                    //Installer la nouvelle version de AppNet
+                    //Installer la nouvelle version de AppNet.
+                    InstallPackage(versionServeur);
                     //Modifier le fichier version (machine).
                     File.WriteAllText(Application.UserAppDataPath + VERSION, versionServeur);
                 }
@@ -61,7 +64,17 @@ namespace LaunchApp
         public static void InstallPackage(string version)
         {
             //Telecharger le paquet de version V et dans l'espace logiciel.
+            var url = Application.UserAppDataPath + VERSION;
+            if (!Directory.Exists(url + "/dl"))
+            {
+                Directory.CreateDirectory(url + "/dl");
+            }
+            new WebClient().DownloadFile("https://google.com/" + version, url+"/dl");
+
             //Extraire le paquet.
+            
+
+
         }
 
         public static bool CheckForInternetConnection()

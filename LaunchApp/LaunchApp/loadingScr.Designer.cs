@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadingScr));
             this.infoBar = new System.Windows.Forms.Label();
             this.LogoIcon = new System.Windows.Forms.PictureBox();
+            this.barLoading = new System.Windows.Forms.ProgressBar();
+            this.underLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,7 +41,7 @@
             this.infoBar.AutoSize = true;
             this.infoBar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infoBar.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.infoBar.Location = new System.Drawing.Point(12, 475);
+            this.infoBar.Location = new System.Drawing.Point(12, 325);
             this.infoBar.Name = "infoBar";
             this.infoBar.Size = new System.Drawing.Size(218, 16);
             this.infoBar.TabIndex = 0;
@@ -50,19 +52,40 @@
             // 
             this.LogoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.LogoIcon.Image = ((System.Drawing.Image)(resources.GetObject("LogoIcon.Image")));
-            this.LogoIcon.Location = new System.Drawing.Point(150, 150);
+            this.LogoIcon.Location = new System.Drawing.Point(150, 15);
             this.LogoIcon.Name = "LogoIcon";
             this.LogoIcon.Size = new System.Drawing.Size(200, 200);
             this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LogoIcon.TabIndex = 1;
             this.LogoIcon.TabStop = false;
             // 
+            // barLoading
+            // 
+            this.barLoading.Location = new System.Drawing.Point(150, 225);
+            this.barLoading.Name = "barLoading";
+            this.barLoading.Size = new System.Drawing.Size(200, 10);
+            this.barLoading.TabIndex = 2;
+            // 
+            // underLabel
+            // 
+            this.underLabel.AutoSize = true;
+            this.underLabel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.underLabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.underLabel.Location = new System.Drawing.Point(186, 238);
+            this.underLabel.Name = "underLabel";
+            this.underLabel.Size = new System.Drawing.Size(164, 16);
+            this.underLabel.TabIndex = 0;
+            this.underLabel.Text = "par Do Evrything Better";
+            this.underLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // loadingScr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 500);
+            this.ClientSize = new System.Drawing.Size(500, 350);
+            this.Controls.Add(this.barLoading);
             this.Controls.Add(this.LogoIcon);
+            this.Controls.Add(this.underLabel);
             this.Controls.Add(this.infoBar);
             this.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -70,7 +93,7 @@
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "loadingScr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "LaunchApp-LOADING";
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -81,6 +104,8 @@
 
         private System.Windows.Forms.Label infoBar;
         private System.Windows.Forms.PictureBox LogoIcon;
+        private System.Windows.Forms.ProgressBar barLoading;
+        private System.Windows.Forms.Label underLabel;
     }
 }
 
