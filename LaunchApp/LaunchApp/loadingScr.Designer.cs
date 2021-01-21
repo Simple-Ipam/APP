@@ -33,6 +33,7 @@
             this.LogoIcon = new System.Windows.Forms.PictureBox();
             this.barLoading = new System.Windows.Forms.ProgressBar();
             this.underLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,12 +72,24 @@
             this.underLabel.AutoSize = true;
             this.underLabel.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.underLabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.underLabel.Location = new System.Drawing.Point(186, 238);
+            this.underLabel.Location = new System.Drawing.Point(324, 325);
             this.underLabel.Name = "underLabel";
             this.underLabel.Size = new System.Drawing.Size(164, 16);
             this.underLabel.TabIndex = 0;
             this.underLabel.Text = "par Do Evrything Better";
             this.underLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(144, 238);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Simple Ipam";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // loadingScr
             // 
@@ -85,6 +98,7 @@
             this.ClientSize = new System.Drawing.Size(500, 350);
             this.Controls.Add(this.barLoading);
             this.Controls.Add(this.LogoIcon);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.underLabel);
             this.Controls.Add(this.infoBar);
             this.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,6 +120,7 @@
         private System.Windows.Forms.PictureBox LogoIcon;
         private System.Windows.Forms.ProgressBar barLoading;
         private System.Windows.Forms.Label underLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -26,13 +26,13 @@ namespace LaunchApp
             if (CheckForInternetConnection())
             {
                 //Recuper la version mis en ligne (version serveur)
-                var versionServeur = new WebClient().DownloadString("https://google.com");
+                var versionServeur = "100";
                 var versionMachine = "";
                 // Verifier si le fichier existe pas.
                 if (!File.Exists(Application.UserAppDataPath+VERSION))
                 {
                     //Installer NetApp + creer le fichier version.
-                    InstallPackage(versionMachine);
+                    InstallPackage(versionServeur);
                 }
 
                 //Recuperer la version machine de AppNet.
@@ -41,7 +41,7 @@ namespace LaunchApp
                 //Verifier si NetApp de la version machine existe pas.
                 if(!Directory.Exists(Application.UserAppDataPath+APN+versionMachine))
                 {
-                    //Installer AppNet de la version machine
+                    //Installer AppNet de la version machine.
                     InstallPackage(versionMachine);
                 }
 
@@ -54,6 +54,12 @@ namespace LaunchApp
                     File.WriteAllText(Application.UserAppDataPath + VERSION, versionServeur);
                 }
 
+                //Lancer la bonne version de AppNet.
+                System.Diagnostics.Process.Start(Application.UserAppDataPath + APN + versionMachine);
+
+                //Fermer LaunchApp.
+                Application.Exit();
+
             }
             else
             {
@@ -65,11 +71,10 @@ namespace LaunchApp
         {
             //Telecharger le paquet de version V et dans l'espace logiciel.
             var url = Application.UserAppDataPath + VERSION;
-            if (!Directory.Exists(url + "/dl"))
-            {
-                Directory.CreateDirectory(url + "/dl");
-            }
-            new WebClient().DownloadFile("https://google.com/" + version, url+"/dl");
+            
+            if (!Directory.Exists(url + "/dl")) Directory.CreateDirectory(url + "/dl");
+
+            new WebClient().DownloadFile("https://alelix.net/img.zip", url+"/dl");
 
             //Extraire le paquet.
             
