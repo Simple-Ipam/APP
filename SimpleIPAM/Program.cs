@@ -11,28 +11,7 @@ namespace SimpleIPAM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (CheckForInternetConnection())
-            {
-                Application.Run(new LoginSIPAM());
-            }
-            else
-            {
-                Application.Run();
-            }
-        }
-
-        public static bool CheckForInternetConnection()
-        {
-            try
-            {
-                using (var client = new WebClient())
-                using (client.OpenRead("http://google.com/generate_204"))
-                    return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Application.Run(new LoginSIPAM());
         }
 
     }

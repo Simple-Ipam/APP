@@ -69,6 +69,7 @@ namespace LaunchApp
                 //Lancer la bonne version de AppNet.
                 label.Text = "Lancement de Simple Ipam...";
                 barLoading.Value = 95;
+                await System.Threading.Tasks.Task.Delay(200);
 
                 var ur = Application.LocalUserAppDataPath + APN + versionMachine;
                 System.Diagnostics.Process.Start(ur + "/img.exe");
@@ -85,7 +86,7 @@ namespace LaunchApp
             }
         }
 
-        public async static void InstallPackage(string version)
+        public static void InstallPackage(string version)
         {
             //Telecharger le paquet de version V et dans l'espace logiciel.
             var url = Application.LocalUserAppDataPath + APN + version;

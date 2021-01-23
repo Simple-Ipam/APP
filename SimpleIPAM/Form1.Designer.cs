@@ -34,6 +34,7 @@
             // 
             // renderWeb
             // 
+            this.renderWeb.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             resources.ApplyResources(this.renderWeb, "renderWeb");
             this.renderWeb.IsWebBrowserContextMenuEnabled = false;
             this.renderWeb.Name = "renderWeb";
