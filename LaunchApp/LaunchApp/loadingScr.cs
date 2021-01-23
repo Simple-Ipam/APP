@@ -69,8 +69,8 @@ namespace LaunchApp
                 //Lancer la bonne version de AppNet.
                 label.Text = "Lancement de Simple Ipam...";
                 barLoading.Value = 95;
+
                 var ur = Application.LocalUserAppDataPath + APN + versionMachine;
-                
                 System.Diagnostics.Process.Start(ur + "/img.exe");
 
                 //Fermer LaunchApp.
