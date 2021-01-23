@@ -12,3 +12,8 @@ D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchAp
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.csproj.CoreCompileInputs.cache
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.exe
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.pdb
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.exe.config
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.exe
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\bin\Debug\LaunchApp.pdb
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.exe
+C:\Users\user\Desktop\appNet\LaunchApp\LaunchApp\obj\Debug\LaunchApp.pdb

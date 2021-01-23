@@ -115,12 +115,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label infoBar;
         private System.Windows.Forms.PictureBox LogoIcon;
-        private System.Windows.Forms.ProgressBar barLoading;
         private System.Windows.Forms.Label underLabel;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label infoBar;
+        public System.Windows.Forms.ProgressBar barLoading;
     }
 }
 
