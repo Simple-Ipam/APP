@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
 
 namespace SimpleIPAM
@@ -11,7 +10,7 @@ namespace SimpleIPAM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginSIPAM());
+            Application.Run(new MainIpam());
         }
 
     }
