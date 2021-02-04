@@ -1,6 +1,6 @@
 ﻿namespace SimpleIPAM
 {
-    partial class LoginSIPAM
+    partial class MainIpam
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,34 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginSIPAM));
-            this.renderWeb = new System.Windows.Forms.WebBrowser();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainIpam));
+            this.notifBar = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuBar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.quitSimpleIPAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // renderWeb
+            // notifBar
             // 
-            this.renderWeb.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            resources.ApplyResources(this.renderWeb, "renderWeb");
-            this.renderWeb.IsWebBrowserContextMenuEnabled = false;
-            this.renderWeb.Name = "renderWeb";
-            this.renderWeb.ScriptErrorsSuppressed = true;
+            resources.ApplyResources(this.notifBar, "notifBar");
+            this.notifBar.ContextMenuStrip = this.contextMenuBar;
+            this.notifBar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifBar_MouseClick);
             // 
-            // LoginSIPAM
+            // contextMenuBar
+            // 
+            this.contextMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitSimpleIPAMToolStripMenuItem});
+            this.contextMenuBar.Name = "contextMenuBar";
+            this.contextMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            resources.ApplyResources(this.contextMenuBar, "contextMenuBar");
+            this.contextMenuBar.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuBar_ItemClicked);
+            // 
+            // quitSimpleIPAMToolStripMenuItem
+            // 
+            this.quitSimpleIPAMToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.quitSimpleIPAMToolStripMenuItem, "quitSimpleIPAMToolStripMenuItem");
+            this.quitSimpleIPAMToolStripMenuItem.Name = "quitSimpleIPAMToolStripMenuItem";
+            // 
+            // MainIpam
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.renderWeb);
-            this.Name = "LoginSIPAM";
+            this.DoubleBuffered = true;
+            this.Name = "MainIpam";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.TopMost = true;
+            this.contextMenuBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.WebBrowser renderWeb;
+        private System.Windows.Forms.NotifyIcon notifBar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuBar;
+        private System.Windows.Forms.ToolStripMenuItem quitSimpleIPAMToolStripMenuItem;
     }
 }
 
