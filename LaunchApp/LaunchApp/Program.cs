@@ -8,7 +8,6 @@ namespace LaunchApp
 {
     static class Program
     {
-
         [STAThread]
         static void Main()
         {
@@ -17,7 +16,6 @@ namespace LaunchApp
             Application.SetCompatibleTextRenderingDefault(true);
             var scn = new loadingScr();
             Application.Run(scn);
-            
         }
 
     }

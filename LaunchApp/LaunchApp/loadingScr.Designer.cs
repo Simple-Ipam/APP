@@ -44,9 +44,9 @@
             this.infoBar.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.infoBar.Location = new System.Drawing.Point(12, 325);
             this.infoBar.Name = "infoBar";
-            this.infoBar.Size = new System.Drawing.Size(218, 16);
+            this.infoBar.Size = new System.Drawing.Size(203, 16);
             this.infoBar.TabIndex = 0;
-            this.infoBar.Text = "Chargement de Simple IPAM. . .";
+            this.infoBar.Text = "Chargement de SimpleIPAM...";
             this.infoBar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // LogoIcon
@@ -107,7 +107,7 @@
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "loadingScr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LaunchApp-LOADING";
+            this.Text = "IPAM-CHARGEMENT";
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,0 +1,6 @@
+[0123/104709.450:INFO:CONSOLE(0)] "Refused to display 'https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en' in a frame because it set 'X-Frame-Options' to 'deny'.", source: https://www.youtube.com/?hl=nl&gl=BE (0)
+[0123/104713.542:INFO:CONSOLE(0)] "The resource https://i.ytimg.com/generate_204 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", source: https://www.youtube.com/?hl=nl&gl=BE (0)
+[0123/104742.959:WARNING:sync_reader.cc(171)] ASR: No room in socket buffer.: Le canal de communication est sur le point d’être fermé. (0xE8)
+[0123/104755.281:WARNING:spdy_session.cc(3384)] Received HEADERS for invalid stream 181
+[0123/104858.976:WARNING:spdy_session.cc(3384)] Received HEADERS for invalid stream 27
+[0123/104945.245:WARNING:spdy_session.cc(3384)] Received HEADERS for invalid stream 27

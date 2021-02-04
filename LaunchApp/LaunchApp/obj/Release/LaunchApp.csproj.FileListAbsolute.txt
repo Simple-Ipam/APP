@@ -1,0 +1,10 @@
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\LaunchApp.exe.config
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\LaunchApp.exe
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\LaunchApp.pdb
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.csprojAssemblyReference.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.loadingScr.resources
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.Properties.Resources.resources
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.csproj.GenerateResource.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.csproj.CoreCompileInputs.cache
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.exe
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.pdb
