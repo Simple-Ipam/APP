@@ -10,7 +10,7 @@ namespace SimpleIPAM
         public MainIpam()
         {
             InitializeComponent();
-            chromiumWeb = new ChromiumWebBrowser("https://alelix.net");
+            chromiumWeb = new ChromiumWebBrowser("https://alelix.net/simple-ipam");
             Controls.Add(chromiumWeb);
             chromiumWeb.Dock = DockStyle.Fill;
             Notify("Ipam - Notification ☻", "Ceci est un teste du système de notification (Lazrack Ipsum).", ToolTipIcon.None);

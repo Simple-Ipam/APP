@@ -130,6 +130,15 @@
     <value>111, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="quitSimpleIPAMToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 12pt</value>
+  </data>
+  <data name="quitSimpleIPAMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 22</value>
+  </data>
+  <data name="quitSimpleIPAMToolStripMenuItem.Text" xml:space="preserve">
+    <value>Quit SimpleIPAM</value>
+  </data>
   <data name="contextMenuBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 26</value>
   </data>
@@ -401,15 +410,6 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="notifBar.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="quitSimpleIPAMToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 12pt</value>
-  </data>
-  <data name="quitSimpleIPAMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
-  </data>
-  <data name="quitSimpleIPAMToolStripMenuItem.Text" xml:space="preserve">
-    <value>Quit SimpleIPAM</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -807,9 +807,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>824, 601</value>
   </data>
-  <data name="$this.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
@@ -1068,6 +1065,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAA//AAAH/wAAB/8AAAf/AAAH/wAAB/8AAAf/AAAP/wAAL/9
         AACH8QAAwAMAAPgPAAD//wAA//8AAP//AAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>On</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
