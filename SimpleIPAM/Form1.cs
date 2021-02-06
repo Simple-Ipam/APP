@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 
@@ -7,9 +8,17 @@ namespace SimpleIPAM
     public partial class MainIpam : Form
     {
         public ChromiumWebBrowser chromiumWeb;
+        public int i = 1;
         public MainIpam(string url)
         {
+            Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\CEF");
             InitializeComponent();
+            CefSettings cefS = new CefSettings() {
+                PersistSessionCookies = true,
+                CachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\CEF"
+            };
+            Cef.Initialize(cefS);
+            //chromiumWeb.BrowserSettings.ApplicationCache = CefState.Enabled;
             chromiumWeb = new ChromiumWebBrowser(url);
             Controls.Add(chromiumWeb);
             chromiumWeb.Dock = DockStyle.Fill;
@@ -64,7 +73,7 @@ namespace SimpleIPAM
         {
             if(e.ClickedItem.Name == "quitSimpleIPAMToolStripMenuItem")
             {
-                System.Environment.Exit(0);
+                Environment.Exit(0);
             }
         }
     }

@@ -78,69 +78,6 @@ namespace LaunchApp
             }
         }
 
-        async void CheckRoutine()
-        {
-            await System.Threading.Tasks.Task.Delay(2000);
-            //Verifier si la machine est connectee à internet:
-            // <OUI> -> Proceder a la suite.
-            // <NON> -> Attendre 10s puis reessayer.
-            var xTry = 0;
-            informationLabel.Text = "Connexion...";
-            while (!IsConnectedToInternet())
-            {
-                xTry++;
-                informationLabel.Text = "Nouvelle tentative(" + xTry + ")...";
-                await System.Threading.Tasks.Task.Delay(10000);
-            }
-            barLoading.Value += 10;
-
-            //Recuperer la version serveur.
-            string serverVersion = "206";
-
-            //Parametrer les chemins d'access selon la version.
-            SetPathVariable(serverVersion);
-
-            //Afficher un message d'attente.
-            informationLabel.Text = "Vérification des fichiers...";
-
-            //Verifier si une version machine existe :
-            //<NON> -> Créer le fichier 'version.dt' avec la version serveur, comme version.
-            if (!File.Exists(versionFile))
-            {
-                File.WriteAllText(versionFile, serverVersion);
-            }
-
-            //Verifier si le dossier de la version machine existe :
-            //<NON> -> Afficher un message d'attente.
-            //<NON> -> Installer la version machine sur celle-ci.
-            if (!Directory.Exists(localExecutable))
-            {
-                informationLabel.Text = "Installation...";
-                InstallPackage(new Uri("https://alelix.net/AppNet-" + serverVersion), serverVersion);
-                barLoading.Value += 20;
-            }
-
-            //Verifier si la version machine est différente à celle sur la machine :
-            //<OUI> -> Afficher un message d'attente.
-            //<OUI> -> Installer la version serveur.
-            //<OUI> -> Modifier la version machine pour celle du serveur.
-            if (File.ReadAllText(versionFile) != serverVersion)
-            {
-                informationLabel.Text = "Mise à jour...";
-                InstallPackage(new Uri("https://alelix.net/AppNet-" + serverVersion), serverVersion);
-                File.WriteAllText(versionFile, serverVersion);
-            }
-            barLoading.Value += 20;
-
-            //Recuperer la nouvelle version machine.
-            var homeVersion = File.ReadAllText(versionFile);
-
-            
-        }
-
-        
-
-
         #region FunctionPlus
         public static void InstallPackage(Uri URI,string version)
         {
