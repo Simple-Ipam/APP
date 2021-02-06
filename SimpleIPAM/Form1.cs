@@ -7,19 +7,40 @@ namespace SimpleIPAM
     public partial class MainIpam : Form
     {
         public ChromiumWebBrowser chromiumWeb;
-        public MainIpam()
+        public MainIpam(string url)
         {
             InitializeComponent();
-            chromiumWeb = new ChromiumWebBrowser("https://alelix.net/simple-ipam");
+            chromiumWeb = new ChromiumWebBrowser(url);
             Controls.Add(chromiumWeb);
             chromiumWeb.Dock = DockStyle.Fill;
-            Notify("Ipam - Notification ☻", "Ceci est un teste du système de notification (Lazrack Ipsum).", ToolTipIcon.None);
+            //Parametrage de l'evenement 'Notification'.
+            timerUpdate.Interval = 5000;
+            timerUpdate.Start();
+            timerUpdate.Tick += Timer_Tick;
         }
 
-        public void Notify(string title,string descript, ToolTipIcon icon)
+        //Code de rafraichissement des notification (devoir et message).
+        private void Timer_Tick(object sender, System.EventArgs e)
+        {
+
+        }
+
+
+        #region Notify();
+        public void Notify(string title, string descript, ToolTipIcon icon)
         {
             notifBar.ShowBalloonTip(5000, title, descript, icon);
         }
+        public void Notify(string title, string descript)
+        {
+            notifBar.ShowBalloonTip(5000, title, descript, ToolTipIcon.None);
+        }
+        public void Notify(string description)
+        {
+            notifBar.ShowBalloonTip(5000, "Ipam", description, ToolTipIcon.None);
+        }
+
+        #endregion
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -43,7 +64,7 @@ namespace SimpleIPAM
         {
             if(e.ClickedItem.Name == "quitSimpleIPAMToolStripMenuItem")
             {
-                Application.Exit();
+                System.Environment.Exit(0);
             }
         }
     }

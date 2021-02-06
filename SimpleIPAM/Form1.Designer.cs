@@ -33,6 +33,7 @@
             this.notifBar = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.quitSimpleIPAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.contextMenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +76,7 @@
         private System.Windows.Forms.NotifyIcon notifBar;
         private System.Windows.Forms.ContextMenuStrip contextMenuBar;
         private System.Windows.Forms.ToolStripMenuItem quitSimpleIPAMToolStripMenuItem;
+        private System.Windows.Forms.Timer timerUpdate;
     }
 }
 

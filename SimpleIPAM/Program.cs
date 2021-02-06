@@ -8,9 +8,10 @@ namespace SimpleIPAM
         [STAThread]
         static void Main()
         {
+            const string s = "https://alelix.net/simple-ipam";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainIpam());
+            Application.Run(new MainIpam(s));
         }
 
     }
