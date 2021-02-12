@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
@@ -8,28 +9,33 @@ namespace SimpleIPAM
     public partial class MainIpam : Form
     {
         public ChromiumWebBrowser chromiumWeb;
-        public int i = 1;
         public MainIpam(string url)
         {
-            Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\CEF");
+            var pathCache = Application.LocalUserAppDataPath + "/cache";
+            Console.WriteLine(pathCache);
+            if (!Directory.Exists(pathCache)) Directory.CreateDirectory(pathCache);
+
+            //Initialisation du naviguateur integre.
             InitializeComponent();
             CefSettings cefS = new CefSettings() {
                 PersistSessionCookies = true,
-                CachePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\CEF"
+                CachePath = pathCache
             };
             Cef.Initialize(cefS);
-            //chromiumWeb.BrowserSettings.ApplicationCache = CefState.Enabled;
             chromiumWeb = new ChromiumWebBrowser(url);
+            chromiumWeb.BrowserSettings.ApplicationCache = CefState.Enabled; 
             Controls.Add(chromiumWeb);
             chromiumWeb.Dock = DockStyle.Fill;
+
             //Parametrage de l'evenement 'Notification'.
             timerUpdate.Interval = 5000;
             timerUpdate.Start();
             timerUpdate.Tick += Timer_Tick;
+
         }
 
         //Code de rafraichissement des notification (devoir et message).
-        private void Timer_Tick(object sender, System.EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
 
         }
@@ -47,6 +53,10 @@ namespace SimpleIPAM
         public void Notify(string description)
         {
             notifBar.ShowBalloonTip(5000, "Ipam", description, ToolTipIcon.None);
+        }
+        public void Notify(string description, ToolTipIcon icon)
+        {
+            notifBar.ShowBalloonTip(5000, "Ipam", description, icon);
         }
 
         #endregion
