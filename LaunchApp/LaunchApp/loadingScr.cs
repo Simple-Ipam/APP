@@ -55,11 +55,24 @@ namespace LaunchApp
 
                 //Afficher un message d'attente.
                 informationLabel.Text = "Vérification des fichiers...";
+                await System.Threading.Tasks.Task.Delay(20);
 
                 //Verifier si une version machine existe :
                 //<NON> -> Créer le fichier 'version.dt' avec la version serveur, comme version.
                 if (!File.Exists(versionFile))
                 {
+                    File.WriteAllText(versionFile, serverVersion);
+                }
+
+                //Verifier si la version machine est différente à celle sur la machine :
+                //<OUI> -> Afficher un message d'attente.
+                //<OUI> -> Installer la version serveur.
+                //<OUI> -> Modifier la version machine pour celle du serveur.
+                if (File.ReadAllText(versionFile) != serverVersion)
+                {
+                    informationLabel.Text = "Mise à jour...";
+                    await System.Threading.Tasks.Task.Delay(20);
+                    InstallPackage(new Uri("https://alelix.net/AppNet-" + serverVersion), serverVersion);
                     File.WriteAllText(versionFile, serverVersion);
                 }
 
