@@ -1,27 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace LaunchApp
 {
     public partial class loadingScr : Form
     {
         public static Label informationLabel;
-        const string VERSION = "/version.dt";
-        const string APN = "/AppNet-";
-        public static bool isChecking;
-        static string versionFile,localExecutable;
+        public static bool isChecking = false;
 
         public loadingScr()
         {
             //Definir les requis (methodes,fonctions,variables,..).
             InitializeComponent();
-            SetPathVariable("206");
             informationLabel = infoBar;
-            //CheckRoutine();
             timer1.Interval = 10000;
             timer1.Start();
             timer1.Tick += CheckUpdate;
@@ -35,7 +32,7 @@ namespace LaunchApp
             {
                 isChecking = true;
                 await System.Threading.Tasks.Task.Delay(1000);
-                //Verifier si la machine est connectee à internet:
+                //Verifier si la machine est connectee a internet:
                 // <OUI> -> Proceder a la suite.
                 // <NON> -> Attendre 10s puis reessayer.
                 informationLabel.Text = "Connexion...";
@@ -46,26 +43,44 @@ namespace LaunchApp
                     isChecking = false;
                     return;
                 }
-                barLoading.Value += 10;
 
-                //Recuperer les informations relative a la nouvelle version de l'app.(API)
+                //Verifier si l API de Simple-Ipam est inactive:
+                // <OUI> -> Afficher la page de 'problème avec l app, non disponible pour le moment'.
+                // <NON> -> Proceder a la suite.
                 var client = new RestClient("server1.alelix.net:47651");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddParameter("function", "checkUpdate");
+                request.AddParameter("function", "ping");
                 IRestResponse response = client.Execute(request);
-                Console.WriteLine(response.Content);
+                Console.WriteLine("statut code : "+response.StatusCode);
+                if(response.StatusCode == 0)
+                {
+                    Console.WriteLine("-STATUT API OFFLINE-");
+                    return;
+                }
 
+                //Recuperer les informations relative a la nouvelle version de l'app.(API)
+                request = new RestRequest(Method.POST);
+                request.AddParameter("function", "checkUpdate");
+                response = client.Execute(request);
+                Console.WriteLine("Response API>>: \n"+response.Content);
+                var table = JsonConvert.DeserializeObject<List<dynamic>>(response.Content);
 
+                //Verifier si une aucune version est installee *OU QUE* la version installee est differente de celle sur GitHub:
+                //  [OUI] -> installer la derniere version
+                if (!File.Exists(Application.LocalUserAppDataPath+"/app.ve"))
+                {
+                    UpdatePackage(table[0].url);
+                }
+                else if (File.ReadAllText(Application.LocalUserAppDataPath + "/app.ve") != table[0].version)
+                {
+                    UpdatePackage(table[0].url);
+                }
 
-                //Afficher un message de lancement.
-                barLoading.Value = 100;
-                informationLabel.Text = "Lancement de SimpleIPAM...";
+                //Ouvrir l AppNet correspondant
+                //System.Diagnostics.Process.Start(localExecutable + "/app/SimpleIPAM.exe");
 
-                //Lancer la version installee sur cette machine.
-                SetPathVariable(versionApp);
-                System.Diagnostics.Process.Start(localExecutable + "/app/SimpleIPAM.exe");
 
                 //Fermer cette application.
                 await System.Threading.Tasks.Task.Delay(20);
@@ -76,20 +91,27 @@ namespace LaunchApp
         }
 
         #region FunctionPlus
-        public static void InstallPackage(Uri URI,string version)
+        
+        public static void UpdatePackage(string urlDownload)
         {
-            //Telecharger le paquet de version V et dans l'espace logiciel.
-            informationLabel.Text = "Téléchargement...";
-            var url = localExecutable;
-            Directory.CreateDirectory(url);
-            new WebClient().DownloadFile(URI, url + "/NetApp-"+version+".zip"); //Attends la fin pour ecrire 'Terminé! ...'.
+            //Telecharger la nouvelle application sur la machine.
+            
 
-            //Extraire le paquet.
-            if (!Directory.Exists(url + "/app")) Directory.CreateDirectory(url + "/app");
-            ZipFile.ExtractToDirectory(url + "/NetApp-" + version +".zip", url + "/app");
-            informationLabel.Text = "Terminé! ...";
+            //Verifier si le dossier 'app' existe pas:
+            //  [OUI]-> Creer le dossier 'app'
+
+
+            //Extraire les paquets au bon emplacement.
+            
+
+            //Suprimer l ancienne version.
+            
+
+            //Modifier le fichier de version 'app.ve'.
+
 
         }
+
         public static bool IsConnectedToInternet()
         {
             try
@@ -102,12 +124,6 @@ namespace LaunchApp
             {
                 return false;
             }
-        }
-
-        public static void SetPathVariable(string version)
-        {
-            versionFile = Application.LocalUserAppDataPath + VERSION;
-            localExecutable = Application.LocalUserAppDataPath + APN + version;
         }
 
         #endregion

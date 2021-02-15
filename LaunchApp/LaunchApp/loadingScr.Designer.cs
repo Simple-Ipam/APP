@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadingScr));
             this.infoBar = new System.Windows.Forms.Label();
             this.LogoIcon = new System.Windows.Forms.PictureBox();
-            this.barLoading = new System.Windows.Forms.ProgressBar();
             this.underLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -55,19 +54,12 @@
             // 
             this.LogoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.LogoIcon.Image = ((System.Drawing.Image)(resources.GetObject("LogoIcon.Image")));
-            this.LogoIcon.Location = new System.Drawing.Point(150, 15);
+            this.LogoIcon.Location = new System.Drawing.Point(150, 35);
             this.LogoIcon.Name = "LogoIcon";
             this.LogoIcon.Size = new System.Drawing.Size(200, 200);
             this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LogoIcon.TabIndex = 1;
             this.LogoIcon.TabStop = false;
-            // 
-            // barLoading
-            // 
-            this.barLoading.Location = new System.Drawing.Point(150, 225);
-            this.barLoading.Name = "barLoading";
-            this.barLoading.Size = new System.Drawing.Size(200, 10);
-            this.barLoading.TabIndex = 2;
             // 
             // underLabel
             // 
@@ -98,7 +90,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 350);
-            this.Controls.Add(this.barLoading);
             this.Controls.Add(this.LogoIcon);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.underLabel);
@@ -121,7 +112,6 @@
         private System.Windows.Forms.Label underLabel;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label infoBar;
-        public System.Windows.Forms.ProgressBar barLoading;
         private System.Windows.Forms.Timer timer1;
     }
 }
