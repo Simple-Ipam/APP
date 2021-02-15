@@ -11,7 +11,7 @@ namespace SimpleIPAM
             const string s = "https://alelix.net/simple-ipam";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainIpam("https://google.com"));
+            Application.Run(new MainIpam(s));
         }
 
     }

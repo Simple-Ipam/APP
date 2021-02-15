@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
+using RestSharp;
 
 namespace LaunchApp
 {
@@ -47,40 +48,23 @@ namespace LaunchApp
                 }
                 barLoading.Value += 10;
 
-                //Recuperer la version serveur.
-                string serverVersion = "206";
+                //Recuperer les informations relative a la nouvelle version de l'app.(API)
+                var client = new RestClient("server1.alelix.net:47651");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddParameter("function", "checkUpdate");
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content);
 
-                //Parametrer les chemins d'access selon la version.
-                SetPathVariable(serverVersion);
 
-                //Afficher un message d'attente.
-                informationLabel.Text = "Vérification des fichiers...";
-                await System.Threading.Tasks.Task.Delay(20);
-
-                //Verifier si une version machine existe :
-                //<NON> -> Créer le fichier 'version.dt' avec la version serveur, comme version.
-                if (!File.Exists(versionFile))
-                {
-                    File.WriteAllText(versionFile, serverVersion);
-                }
-
-                //Verifier si la version machine est différente à celle sur la machine :
-                //<OUI> -> Afficher un message d'attente.
-                //<OUI> -> Installer la version serveur.
-                //<OUI> -> Modifier la version machine pour celle du serveur.
-                if (File.ReadAllText(versionFile) != serverVersion)
-                {
-                    informationLabel.Text = "Mise à jour...";
-                    await System.Threading.Tasks.Task.Delay(20);
-                    InstallPackage(new Uri("https://alelix.net/AppNet-" + serverVersion), serverVersion);
-                    File.WriteAllText(versionFile, serverVersion);
-                }
 
                 //Afficher un message de lancement.
                 barLoading.Value = 100;
                 informationLabel.Text = "Lancement de SimpleIPAM...";
 
                 //Lancer la version installee sur cette machine.
+                SetPathVariable(versionApp);
                 System.Diagnostics.Process.Start(localExecutable + "/app/SimpleIPAM.exe");
 
                 //Fermer cette application.
