@@ -35,6 +35,7 @@
             this.underLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +86,11 @@
             this.label1.Text = "Simple Ipam";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // loadingScr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
@@ -113,6 +119,7 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label infoBar;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
