@@ -51,7 +51,7 @@ namespace LaunchApp
                 }
 
                 //Verifier si l API de Simple-Ipam est inactive:
-                // <OUI> -> Afficher la page de 'problème avec l app, non disponible pour le moment'.
+                // <OUI> -> Afficher 'Service indisponible(API)..'.
                 // <NON> -> Proceder a la suite.
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -64,6 +64,7 @@ namespace LaunchApp
                     informationLabel.ForeColor = System.Drawing.Color.Red;
                     informationLabel.Text = "Service indisponible(API)...";
                     isChecking = false;
+                    notifyIcon1.ShowBalloonTip(4000, "Problème d'API", "Nos services internes à Simple-IPAM ne sont pas disponible pour le moment.",ToolTipIcon.Error);
                     return;
                 }
 
@@ -145,15 +146,4 @@ namespace LaunchApp
         #endregion
 
     }
-
-
-
-
-    /*
-     var ur = Application.LocalUserAppDataPath + APN + versionMachine;
-                System.Diagnostics.Process.Start(ur + "/dl/SimpleIPAM.exe");
-     */
-
 }
-
-
