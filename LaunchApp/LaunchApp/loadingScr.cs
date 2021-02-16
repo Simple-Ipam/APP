@@ -58,17 +58,19 @@ namespace LaunchApp
                 request.AddParameter("function", "ping");
                 IRestResponse response = client.Execute(request);
                 Console.WriteLine(response.Content);
-                if (response.StatusCode == 0)
+
+                if (response.StatusCode != 0)
                 {
                     Console.WriteLine("-STATUT API OFFLINE-");
                     informationLabel.ForeColor = System.Drawing.Color.Red;
                     informationLabel.Text = "Service indisponible(API)...";
                     isChecking = false;
-                    notifyIcon1.ShowBalloonTip(4000, "Problème d'API", "Nos services internes à Simple-IPAM ne sont pas disponible pour le moment.",ToolTipIcon.Error);
+                    //notifyIcon1.ShowBalloonTip(4000, "Problème d'API", "Nos services internes à Simple-IPAM ne sont pas disponible pour le moment.",ToolTipIcon.Error);
                     return;
                 }
 
                 //Recuperer les informations relative a la nouvelle version de l'app.(API)
+                informationLabel.Text = "Récupération des informations...";
                 var requestURL = new RestRequest(Method.POST);
                 requestURL.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 requestURL.AddParameter("function", "ping");
@@ -146,4 +148,19 @@ namespace LaunchApp
         #endregion
 
     }
+}
+
+public class JsonFunction{
+    
+    public static string function
+    {
+        get;
+        set;
+    }
+    public static string commandName
+    {
+        get;
+        set;
+    }
+
 }
