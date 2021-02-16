@@ -49,23 +49,27 @@ namespace LaunchApp
                     isChecking = false;
                     return;
                 }
+                Console.WriteLine("--PASSED--");
 
                 //Verifier si l API de Simple-Ipam est inactive:
                 // <OUI> -> Afficher 'Service indisponible(API)..'.
                 // <NON> -> Proceder a la suite.
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.AddParameter("function", "ping");
-                IRestResponse response = client.Execute(request);
-                Console.WriteLine(response.Content);
+                IRestClient clicli = new RestClient();
+                IRestRequest rekrek = new RestRequest()
+                {
+                    Resource = "server1.alelix.net"
+                };
+                string json = "{" + "\"function\":\"ping\"" + "}";
+                rekrek.AddJsonBody(JsonConvert.SerializeObject(json));
+                IRestResponse resres = clicli.Post(rekrek);
+                Console.WriteLine(">>: "+ rekrek.StatusCode);
 
-                if (response.StatusCode != 0)
+                if (rekrek.StatusCode != HttpStatusCode.OK)
                 {
                     Console.WriteLine("-STATUT API OFFLINE-");
                     informationLabel.ForeColor = System.Drawing.Color.Red;
                     informationLabel.Text = "Service indisponible(API)...";
                     isChecking = false;
-                    //notifyIcon1.ShowBalloonTip(4000, "Problème d'API", "Nos services internes à Simple-IPAM ne sont pas disponible pour le moment.",ToolTipIcon.Error);
                     return;
                 }
 
@@ -148,19 +152,4 @@ namespace LaunchApp
         #endregion
 
     }
-}
-
-public class JsonFunction{
-    
-    public static string function
-    {
-        get;
-        set;
-    }
-    public static string commandName
-    {
-        get;
-        set;
-    }
-
 }
