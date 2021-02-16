@@ -22,3 +22,4 @@ D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\RestSh
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\obj\Release\LaunchApp.csproj.CopyComplete
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\Newtonsoft.Json.dll
 D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\Newtonsoft.Json.xml
+D:\VsCode_PROJET\AppNet-SIMPLEIPAM\appNet\LaunchApp\LaunchApp\bin\Release\RestSharp.Serializers.Newtonsoft.Json.dll

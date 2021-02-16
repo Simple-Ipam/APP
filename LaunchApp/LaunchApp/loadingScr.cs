@@ -32,10 +32,6 @@ namespace LaunchApp
             informationLabel.ForeColor = System.Drawing.Color.FromName("AppWorkspace");
             if (!isChecking)
             {
-                //Créer une instance de RestSharp.
-                var client = new RestClient("server1.alelix.net:47651");
-                client.Timeout = -1;
-
                 isChecking = true;
                 //Verifier si la machine est connectee a internet:
                 // <OUI> -> Proceder a la suite.
@@ -54,32 +50,18 @@ namespace LaunchApp
                 //Verifier si l API de Simple-Ipam est inactive:
                 // <OUI> -> Afficher 'Service indisponible(API)..'.
                 // <NON> -> Proceder a la suite.
-                IRestClient clicli = new RestClient();
-                IRestRequest rekrek = new RestRequest()
-                {
-                    Resource = "server1.alelix.net"
-                };
-                string json = "{" + "\"function\":\"ping\"" + "}";
-                rekrek.AddJsonBody(JsonConvert.SerializeObject(json));
-                IRestResponse resres = clicli.Post(rekrek);
-                Console.WriteLine(">>: "+ rekrek.StatusCode);
+                var client = new RestClient("server1.alelix.net:47651");
+                client.Timeout = -1;
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", "{\r\n    \"function\":\"checkUpdate\"\r\n}", ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                Console.WriteLine(">>: "+response.Content);
 
-                if (rekrek.StatusCode != HttpStatusCode.OK)
-                {
-                    Console.WriteLine("-STATUT API OFFLINE-");
-                    informationLabel.ForeColor = System.Drawing.Color.Red;
-                    informationLabel.Text = "Service indisponible(API)...";
-                    isChecking = false;
-                    return;
-                }
 
                 //Recuperer les informations relative a la nouvelle version de l'app.(API)
-                informationLabel.Text = "Récupération des informations...";
-                var requestURL = new RestRequest(Method.POST);
-                requestURL.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                requestURL.AddParameter("function", "ping");
-                IRestResponse responseURL = client.Execute(requestURL);
-                var table = JsonConvert.DeserializeObject<List<dynamic>>(responseURL.Content);
+
+                var table = JsonConvert.DeserializeObject<List<dynamic>>("");
                 Console.WriteLine(table[0].url);
                 Console.WriteLine(table[0].version);
 
