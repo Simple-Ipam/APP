@@ -4,7 +4,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
-using RestSharp;
 using Newtonsoft.Json;
 
 namespace LaunchApp
@@ -12,7 +11,7 @@ namespace LaunchApp
     public partial class loadingScr : Form
     {
         public static Label informationLabel;
-        public static bool isChecking = false;
+        public static bool isChecking = false, apiDesactivedFirstTime = true;
 
         public loadingScr()
         {
@@ -45,50 +44,70 @@ namespace LaunchApp
                     isChecking = false;
                     return;
                 }
-                Console.WriteLine("--PASSED--");
 
                 //Verifier si l API de Simple-Ipam est inactive:
                 // <OUI> -> Afficher 'Service indisponible(API)..'.
                 // <NON> -> Proceder a la suite.
-                var client = new RestClient("server1.alelix.net:47651");
-                client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Content-Type", "application/json");
-                request.AddParameter("application/json", "{\r\n    \"function\":\"checkUpdate\"\r\n}", ParameterType.RequestBody);
-                IRestResponse response = client.Execute(request);
-                Console.WriteLine(">>: "+response.Content);
-
+                informationLabel.Text = "Récupération des données serveurs...";
+                await System.Threading.Tasks.Task.Delay(2000);
+                string pingResp = APIRest.Post("http://server1.alelix.net:47651", "ping");
+                Console.WriteLine(pingResp);
+                if(pingResp == "ERROR")
+                {
+                    informationLabel.Text = "Service indisponible(API)...";
+                    if(apiDesactivedFirstTime) notifyIcon1.ShowBalloonTip(4000, "Service indisponible",
+                        "Les services internes à Simple-IPAM sont indisponible pour le moment.. ici, c'est le service principale (API) qui est désactivé.", ToolTipIcon.Error);
+                    apiDesactivedFirstTime = false;
+                    isChecking = false;
+                    return;
+                }
 
                 //Recuperer les informations relative a la nouvelle version de l'app.(API)
-
-                var table = JsonConvert.DeserializeObject<List<dynamic>>("");
+                string updateResp = APIRest.Post("http://server1.alelix.net:47651", "checkUpdate");
+                var table = JsonConvert.DeserializeObject<List<dynamic>>(updateResp);
                 Console.WriteLine(table[0].url);
                 Console.WriteLine(table[0].version);
 
                 //Verifier si une aucune version est installee *OU QUE* la version installee est differente de celle sur GitHub:
                 //  [OUI] -> installer la derniere version
+                int vers = int.Parse(table[0].version.Replace('v', ' '));
                 if (!File.Exists(Application.LocalUserAppDataPath+"/app.ve"))
                 {
-                    UpdatePackage(table[0].url, int.Parse(table[0].version.Replace('v', ' ')));
+                    UpdatePackage(table[0].url, vers);
                 }
                 else if (File.ReadAllText(Application.LocalUserAppDataPath + "/app.ve") != table[0].version)
                 {
-                    UpdatePackage(table[0].url, int.Parse(table[0].version.Replace('v', ' ')));
+                    UpdatePackage(table[0].url, vers);
+                }
+                else if (!Directory.Exists(Application.LocalUserAppDataPath + "/app_" + vers))
+                {
+                    UpdatePackage(table[0].url, vers);
+                }
+                else if (!File.Exists(Application.LocalUserAppDataPath + "/app_"+vers+ "/SimpleIPAM.exe"))
+                {
+                    UpdatePackage(table[0].url, vers);
                 }
 
                 //Ouvrir l AppNet correspondant
-                System.Diagnostics.Process.Start(Application.LocalUserAppDataPath + "/app/SimpleIPAM.exe");
+                try
+                {
+                    System.Diagnostics.Process.Start(Application.LocalUserAppDataPath + "/app_"+vers+"/SimpleIPAM.exe");
+                    informationLabel.Text = "sortie...";
+                    //Fermer cette application.
+                    Environment.Exit(0);
+                }
+                catch
+                {
+                    // Dans le cas où l AppNet nest pas bien installe:
+                    // - afficher un message communiquant le probleme
+                    // - recommencer la procédure
+                }
 
-
-                //Fermer cette application.
-                await System.Threading.Tasks.Task.Delay(20);
-                informationLabel.Text = "sortie...";
-                Environment.Exit(0);
 
             }
         }
 
-        #region FunctionPlus
+        #region otherFunctions/Method
         
         public static void UpdatePackage(string urlDownload,int version)
         {
@@ -116,6 +135,17 @@ namespace LaunchApp
             }
 
         }
+
+        private void CookieForYou(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine(e.KeyCode);
+            if(e.KeyCode == Keys.Menu && !isChecking)
+            {
+                notifyIcon1.ShowBalloonTip(100);
+                LogoIcon.Load("./../../Resources/android-chrome-192x192.png");
+            }
+        }
+
 
         public static bool IsConnectedToInternet()
         {

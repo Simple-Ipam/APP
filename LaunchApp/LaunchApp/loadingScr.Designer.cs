@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadingScr));
             this.infoBar = new System.Windows.Forms.Label();
-            this.LogoIcon = new System.Windows.Forms.PictureBox();
             this.underLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.LogoIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,17 +50,6 @@
             this.infoBar.TabIndex = 0;
             this.infoBar.Text = "Chargement de SimpleIPAM...";
             this.infoBar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // LogoIcon
-            // 
-            this.LogoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LogoIcon.Image = ((System.Drawing.Image)(resources.GetObject("LogoIcon.Image")));
-            this.LogoIcon.Location = new System.Drawing.Point(150, 35);
-            this.LogoIcon.Name = "LogoIcon";
-            this.LogoIcon.Size = new System.Drawing.Size(200, 200);
-            this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LogoIcon.TabIndex = 1;
-            this.LogoIcon.TabStop = false;
             // 
             // underLabel
             // 
@@ -88,8 +77,22 @@
             // 
             // notifyIcon1
             // 
+            this.notifyIcon1.BalloonTipText = "Cookie ^^";
+            this.notifyIcon1.BalloonTipTitle = "Beaucoup de cookie pour toi !";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            // 
+            // LogoIcon
+            // 
+            this.LogoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.LogoIcon.Image = global::LaunchApp.Properties.Resources.android_chrome_192x1921;
+            this.LogoIcon.Location = new System.Drawing.Point(150, 35);
+            this.LogoIcon.Name = "LogoIcon";
+            this.LogoIcon.Size = new System.Drawing.Size(200, 200);
+            this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogoIcon.TabIndex = 1;
+            this.LogoIcon.TabStop = false;
             // 
             // loadingScr
             // 
@@ -107,6 +110,7 @@
             this.Name = "loadingScr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IPAM-CHARGEMENT";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CookieForYou);
             ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

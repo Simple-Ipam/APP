@@ -63,9 +63,19 @@ namespace LaunchApp.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logoooIPAM {
+        internal static System.Drawing.Bitmap android_chrome_192x192 {
             get {
-                object obj = ResourceManager.GetObject("logoooIPAM", resourceCulture);
+                object obj = ResourceManager.GetObject("android-chrome-192x192", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap android_chrome_192x1921 {
+            get {
+                object obj = ResourceManager.GetObject("android-chrome-192x1921", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
