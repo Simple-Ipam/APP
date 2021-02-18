@@ -58,9 +58,9 @@
             this.underLabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.underLabel.Location = new System.Drawing.Point(324, 325);
             this.underLabel.Name = "underLabel";
-            this.underLabel.Size = new System.Drawing.Size(164, 16);
+            this.underLabel.Size = new System.Drawing.Size(172, 16);
             this.underLabel.TabIndex = 0;
-            this.underLabel.Text = "par Do Evrything Better";
+            this.underLabel.Text = "par Do Everything Better";
             this.underLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label1
@@ -68,12 +68,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(144, 238);
+            this.label1.Location = new System.Drawing.Point(146, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Simple IPAM";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // notifyIcon1
             // 
@@ -86,7 +86,7 @@
             // LogoIcon
             // 
             this.LogoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LogoIcon.Image = global::LaunchApp.Properties.Resources.android_chrome_192x1921;
+            this.LogoIcon.Image = ((System.Drawing.Image)(resources.GetObject("LogoIcon.Image")));
             this.LogoIcon.Location = new System.Drawing.Point(150, 35);
             this.LogoIcon.Name = "LogoIcon";
             this.LogoIcon.Size = new System.Drawing.Size(200, 200);

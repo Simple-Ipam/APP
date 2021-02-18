@@ -63,9 +63,9 @@ namespace LaunchApp.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap android_chrome_192x192 {
+        internal static System.Drawing.Bitmap cookies {
             get {
-                object obj = ResourceManager.GetObject("android-chrome-192x192", resourceCulture);
+                object obj = ResourceManager.GetObject("cookies", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace LaunchApp.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap android_chrome_192x1921 {
+        internal static System.Drawing.Bitmap logo_ipam {
             get {
-                object obj = ResourceManager.GetObject("android-chrome-192x1921", resourceCulture);
+                object obj = ResourceManager.GetObject("logo_ipam", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

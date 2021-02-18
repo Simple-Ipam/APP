@@ -87,10 +87,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\android-chrome-192x192.png" />
+    <None Include="Resources\logo_ipam.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\android-chrome-192x1921.png" />
+    <None Include="Resources\cookies.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

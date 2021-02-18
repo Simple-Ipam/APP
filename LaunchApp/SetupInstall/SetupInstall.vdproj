@@ -104,6 +104,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -366,15 +374,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Simple-IPAM"
-        "ProductCode" = "8:{174C2F78-54B6-43C7-A603-E53CD5DBF94B}"
-        "PackageCode" = "8:{504A683F-7B60-406D-BDB0-1870B927F7E5}"
+        "ProductCode" = "8:{9F2A106A-CE4A-411C-8B48-D0CA0BC74A8C}"
+        "PackageCode" = "8:{158CBB2E-068E-4CCF-9B3E-EE775001F9C7}"
         "UpgradeCode" = "8:{FEA2440B-4563-480D-BFFD-B9EA274F6590}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:DoEverythingBetter"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

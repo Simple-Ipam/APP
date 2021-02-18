@@ -45,12 +45,17 @@ namespace LaunchApp
                     return;
                 }
 
+                //Verifier si le fichier 'admin' existe:
+                // <OUI> -> Utiliser "http://192.168.1.120:8080" comme apiUrl.
+                // <NON> -> Utiliser "http://server1.alelix.net:47651" comme apiUrl.
+                var apiUrl = File.Exists(Application.LocalUserAppDataPath + "/admin") ? "http://192.168.1.120:8080" : "http://server1.alelix.net:47651";
+
                 //Verifier si l API de Simple-Ipam est inactive:
                 // <OUI> -> Afficher 'Service indisponible(API)..'.
                 // <NON> -> Proceder a la suite.
                 informationLabel.Text = "Récupération des données serveurs...";
                 await System.Threading.Tasks.Task.Delay(2000);
-                string pingResp = APIRest.Post("http://server1.alelix.net:47651", "ping");
+                string pingResp = APIRest.Post(apiUrl, "ping");
                 if(pingResp == "ERROR")
                 {
                     informationLabel.Text = "Service indisponible(API)...";
@@ -63,7 +68,7 @@ namespace LaunchApp
                 }
 
                 //Recuperer les informations relative a la nouvelle version de l'app.(API)
-                string updateResp = APIRest.Post("http://server1.alelix.net:47651", "checkUpdate");
+                string updateResp = APIRest.Post(apiUrl, "checkUpdate");
                 var table = Newtonsoft.Json.Linq.JObject.Parse(updateResp);
 
                 //Verifier si une aucune version est installee *OU QUE* la version installee est differente de celle sur GitHub:
@@ -72,18 +77,26 @@ namespace LaunchApp
                 int vers = int.Parse(versionS.Replace('v', ' '));
                 if (!File.Exists(Application.LocalUserAppDataPath+"/app.ve"))
                 {
+                    informationLabel.Text = "Installation...";
+                    await System.Threading.Tasks.Task.Delay(1000);
                     UpdatePackage((string)table["url"], vers);
                 }
                 else if (File.ReadAllText(Application.LocalUserAppDataPath + "/app.ve") != (string)table["version"])
                 {
+                    informationLabel.Text = "Mise à jour...";
+                    await System.Threading.Tasks.Task.Delay(1000);
                     UpdatePackage((string)table["url"], vers);
                 }
                 else if (!Directory.Exists(Application.LocalUserAppDataPath + "/app_" + vers))
                 {
+                    informationLabel.Text = "Mise à jour...";
+                    await System.Threading.Tasks.Task.Delay(1000);
                     UpdatePackage((string)table["url"], vers);
                 }
                 else if (!File.Exists(Application.LocalUserAppDataPath + "/app_"+vers+ "/SimpleIPAM.exe"))
                 {
+                    informationLabel.Text = "Réparation...";
+                    await System.Threading.Tasks.Task.Delay(1000);
                     UpdatePackage((string)table["url"], vers);
                 }
 
@@ -111,7 +124,6 @@ namespace LaunchApp
         public static void UpdatePackage(string urlDownload,int version)
         {
             //Telecharger la nouvelle application sur la machine.
-            informationLabel.Text = "Mise à jour...";
             string urlLocal = Application.LocalUserAppDataPath+"/Release.zip";
             new WebClient().DownloadFile(urlDownload, urlLocal);
 
@@ -145,7 +157,7 @@ namespace LaunchApp
             if(e.KeyCode == Keys.Menu && !isChecking)
             {
                 notifyIcon1.ShowBalloonTip(100);
-                LogoIcon.Load("./../../Resources/android-chrome-192x192.png");
+                LogoIcon.Image = LaunchApp.Properties.Resources.cookies;
             }
         }
 
