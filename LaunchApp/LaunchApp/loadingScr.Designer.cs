@@ -70,15 +70,15 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(144, 238);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 32);
+            this.label1.Size = new System.Drawing.Size(209, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Simple Ipam";
+            this.label1.Text = "Simple IPAM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipText = "Cookie ^^";
-            this.notifyIcon1.BalloonTipTitle = "Beaucoup de cookie pour toi !";
+            this.notifyIcon1.BalloonTipTitle = "Pour te remercier, un cookie !";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;

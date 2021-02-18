@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIRest.cs" />
     <Compile Include="loadingScr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,9 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logoooIPAM.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\android-chrome-192x192.png" />

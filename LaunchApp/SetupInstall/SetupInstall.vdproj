@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2A33D98C29E0E213B20278B63C24B4FE"
-        "OwnerKey" = "8:_A19119C735D4464F862D5FC16F9D6BA2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_84712279B31D49AEA16973E6F2279990"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,19 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C6C7D5A0A2E67842D30BD4660E68FD12"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A19119C735D4464F862D5FC16F9D6BA2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2A33D98C29E0E213B20278B63C24B4FE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -91,6 +73,12 @@
         "OwnerKey" = "8:_D39E6405F43512BBAA115DCE36EBAB7A"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C6C7D5A0A2E67842D30BD4660E68FD12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -109,6 +97,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -125,6 +121,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -154,37 +166,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2A33D98C29E0E213B20278B63C24B4FE"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2A33D98C29E0E213B20278B63C24B4FE"
-                    {
-                    "Name" = "8:RestSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RestSharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F95A738989E5485F9EC99248C847F66C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84712279B31D49AEA16973E6F2279990"
             {
             "SourcePath" = "8:C:\\Users\\COL-1\\Desktop\\favicon_package_v0.16\\favicon.ico"
@@ -384,26 +365,26 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupInstall"
+        "ProductName" = "8:Simple-IPAM"
         "ProductCode" = "8:{174C2F78-54B6-43C7-A603-E53CD5DBF94B}"
-        "PackageCode" = "8:{E016DA6B-245E-4E5A-AEAA-ACD5080E236C}"
+        "PackageCode" = "8:{DE507FA0-7690-43E5-98EB-7C135B0E3941}"
         "UpgradeCode" = "8:{FEA2440B-4563-480D-BFFD-B9EA274F6590}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:DoEvrythingBetter"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SetupInstall"
+        "Title" = "8:Simple-IPAM"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:DoEvrythingBetter"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_84712279B31D49AEA16973E6F2279990"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -506,17 +487,17 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DD986300C8B2455CAC668DD439C39378"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7C0539DCA3F34CC8A61D44097C656DB1"
             {
-            "Name" = "8:Simple-IPAM"
+            "Name" = "8:IPAM"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_747050D6F6024D4CB6438BCF0B81D51C"
+            "Target" = "8:_A19119C735D4464F862D5FC16F9D6BA2"
             "Folder" = "8:_747050D6F6024D4CB6438BCF0B81D51C"
-            "WorkingFolder" = "8:_747050D6F6024D4CB6438BCF0B81D51C"
+            "WorkingFolder" = "8:_F95A738989E5485F9EC99248C847F66C"
             "Icon" = "8:_84712279B31D49AEA16973E6F2279990"
             "Feature" = "8:"
             }

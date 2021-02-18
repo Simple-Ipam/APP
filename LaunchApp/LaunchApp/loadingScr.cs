@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using System.Text;
+using System.Net.Http;
 
 namespace LaunchApp
 {
@@ -21,7 +21,6 @@ namespace LaunchApp
             timer1.Interval = 10000;
             timer1.Start();
             timer1.Tick += CheckUpdate;
-            Console.WriteLine("-----[PROGRAM SHOULD GO]----");
 
         }
 
@@ -40,6 +39,7 @@ namespace LaunchApp
                 if (!IsConnectedToInternet())
                 {
                     xTry++;
+                    informationLabel.ForeColor = System.Drawing.Color.Red;
                     informationLabel.Text = "Nouvelle tentative(" + xTry + ")...";
                     isChecking = false;
                     return;
@@ -51,12 +51,12 @@ namespace LaunchApp
                 informationLabel.Text = "Récupération des données serveurs...";
                 await System.Threading.Tasks.Task.Delay(2000);
                 string pingResp = APIRest.Post("http://server1.alelix.net:47651", "ping");
-                Console.WriteLine(pingResp);
                 if(pingResp == "ERROR")
                 {
                     informationLabel.Text = "Service indisponible(API)...";
+                    informationLabel.ForeColor = System.Drawing.Color.Red;
                     if(apiDesactivedFirstTime) notifyIcon1.ShowBalloonTip(4000, "Service indisponible",
-                        "Les services internes à Simple-IPAM sont indisponible pour le moment.. ici, c'est le service principale (API) qui est désactivé.", ToolTipIcon.Error);
+                        "L'API de Simple-IPAM est indisponible pour le moment.", ToolTipIcon.Error);
                     apiDesactivedFirstTime = false;
                     isChecking = false;
                     return;
@@ -64,28 +64,27 @@ namespace LaunchApp
 
                 //Recuperer les informations relative a la nouvelle version de l'app.(API)
                 string updateResp = APIRest.Post("http://server1.alelix.net:47651", "checkUpdate");
-                var table = JsonConvert.DeserializeObject<List<dynamic>>(updateResp);
-                Console.WriteLine(table[0].url);
-                Console.WriteLine(table[0].version);
+                var table = Newtonsoft.Json.Linq.JObject.Parse(updateResp);
 
                 //Verifier si une aucune version est installee *OU QUE* la version installee est differente de celle sur GitHub:
                 //  [OUI] -> installer la derniere version
-                int vers = int.Parse(table[0].version.Replace('v', ' '));
+                string versionS = (string)table["version"];
+                int vers = int.Parse(versionS.Replace('v', ' '));
                 if (!File.Exists(Application.LocalUserAppDataPath+"/app.ve"))
                 {
-                    UpdatePackage(table[0].url, vers);
+                    UpdatePackage((string)table["url"], vers);
                 }
-                else if (File.ReadAllText(Application.LocalUserAppDataPath + "/app.ve") != table[0].version)
+                else if (File.ReadAllText(Application.LocalUserAppDataPath + "/app.ve") != (string)table["version"])
                 {
-                    UpdatePackage(table[0].url, vers);
+                    UpdatePackage((string)table["url"], vers);
                 }
                 else if (!Directory.Exists(Application.LocalUserAppDataPath + "/app_" + vers))
                 {
-                    UpdatePackage(table[0].url, vers);
+                    UpdatePackage((string)table["url"], vers);
                 }
                 else if (!File.Exists(Application.LocalUserAppDataPath + "/app_"+vers+ "/SimpleIPAM.exe"))
                 {
-                    UpdatePackage(table[0].url, vers);
+                    UpdatePackage((string)table["url"], vers);
                 }
 
                 //Ouvrir l AppNet correspondant
@@ -112,6 +111,7 @@ namespace LaunchApp
         public static void UpdatePackage(string urlDownload,int version)
         {
             //Telecharger la nouvelle application sur la machine.
+            informationLabel.Text = "Mise à jour...";
             string urlLocal = Application.LocalUserAppDataPath+"/Release.zip";
             new WebClient().DownloadFile(urlDownload, urlLocal);
 
@@ -123,7 +123,10 @@ namespace LaunchApp
             }
 
             //Extraire les paquets au bon emplacement.
-            ZipFile.ExtractToDirectory(urlDownload, Application.LocalUserAppDataPath + "/app_"+ version);
+            ZipFile.ExtractToDirectory(urlLocal, Application.LocalUserAppDataPath + "/app_"+ version);
+
+            //Supprimer le ZIP.
+            File.Delete(urlLocal);
 
             //Modifier le fichier de version 'app.ve'.
             File.WriteAllText(Application.LocalUserAppDataPath + "/app.ve", "v"+version);
@@ -163,5 +166,43 @@ namespace LaunchApp
 
         #endregion
 
+    }
+}
+
+public static class APIRest
+{
+
+    public static string Post(string url, string valueFunction)
+    {
+        using (var client = new HttpClient())
+        {
+            var objJSON = new Function { function = valueFunction };
+            var content = new StringContent(
+                Newtonsoft.Json.JsonConvert.SerializeObject(objJSON), Encoding.UTF8, "application/json"
+            );
+            Console.WriteLine(">[WEB-PRELOAD]>: " + content);
+            var res = client.PostAsync(url, content);
+            try
+            {
+                var resp = res.Result.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(">[WEB]>: " + resp);
+                return resp;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return "ERROR";
+            }
+        }
+
+    }
+
+}
+
+public class Function
+{
+    public string function
+    {
+        get; set;
     }
 }
